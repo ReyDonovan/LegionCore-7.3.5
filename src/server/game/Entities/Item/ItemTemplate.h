@@ -700,7 +700,6 @@ struct ItemTemplate
 
     uint8 GetSocketType(uint8 index) const { ASSERT(index < MAX_ITEM_PROTO_SOCKETS); return ExtendedData->SocketType[index]; }
     int32 GetItemStatType(uint32 index) const { ASSERT(index < MAX_ITEM_PROTO_STATS); return ExtendedData->StatModifierBonusStat[index]; }
-    int32 GetItemStatValue(uint32 index) const { ASSERT(index < MAX_ITEM_PROTO_STATS); return ExtendedData->ItemStatValue[index]; }
     int32 GetItemStatAllocation(uint32 index) const { ASSERT(index < MAX_ITEM_PROTO_STATS); return ExtendedData->StatPercentEditor[index]; }
     float GetItemStatSocketCostMultiplier(uint32 index) const { ASSERT(index < MAX_ITEM_PROTO_STATS); return ExtendedData->StatPercentageOfSocket[index]; }
 

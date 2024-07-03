@@ -329,7 +329,6 @@ extern int32 const ItemTransmogrificationSlots[MAX_INVTYPE];
 struct BonusData
 {
     int32 ItemStatType[MAX_ITEM_PROTO_STATS];
-    int32 ItemStatValue[MAX_ITEM_PROTO_STATS];
     int32 StatPercentEditor[MAX_ITEM_PROTO_STATS];
     float StatPercentageOfSocket[MAX_ITEM_PROTO_STATS];
     uint32 GemItemLevelBonus[MAX_ITEM_PROTO_SOCKETS];

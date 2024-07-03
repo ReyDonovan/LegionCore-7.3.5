@@ -2210,7 +2210,7 @@ bool Item::HasStats(WorldPackets::Item::ItemInstance const& itemInstance, BonusD
     if (itemInstance.RandomPropertiesID != 0)
         return true;
 
-    for (auto i : bonus->ItemStatValue)
+    for (auto i : bonus->ItemStatAllocation)
         if (i != 0)
             return true;
 
@@ -2719,7 +2719,7 @@ int32 Item::GetItemStatValue(uint32 index, bool isPvP) const
         return int32(std::floor(statValue + 0.5f));
     }
 
-    return _bonusData.ItemStatValue[index];
+    return 0;
 }
 
 bool Item::CanBeDisenchanted()
@@ -2944,9 +2944,6 @@ void BonusData::Initialize(ItemTemplate const* proto)
     RequiredLevel = proto->GetBaseRequiredLevel();
     for (uint32 i = 0; i < MAX_ITEM_PROTO_STATS; ++i)
         ItemStatType[i] = proto->GetItemStatType(i);
-
-    for (uint32 i = 0; i < MAX_ITEM_PROTO_STATS; ++i)
-        ItemStatValue[i] = proto->GetItemStatValue(i);
 
     for (uint32 i = 0; i < MAX_ITEM_PROTO_STATS; ++i)
         StatPercentEditor[i] = proto->GetItemStatAllocation(i);
