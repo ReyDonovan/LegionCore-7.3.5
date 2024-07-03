@@ -834,21 +834,19 @@ namespace
     std::unordered_map<uint32, bool> _isChildItem;
 }
 
-typedef StringVector DB2StoreProblemList;
-
 std::mutex loadMutex{};
 
-void LoadDB2(uint32& availableDb2Locales, DB2StoreProblemList& errlist, StorageMap& stores, DB2StorageBase* storage, std::string const& db2Path, uint32 defaultLocale)
+void LoadDB2(uint32& availableDb2Locales, std::vector<std::string>& errlist, StorageMap& stores, DB2StorageBase* storage, std::string const& db2Path, uint32 defaultLocale)
 {
     auto loadInfo = storage->GetLoadInfo();
     {
         std::string clientMetaString, ourMetaString;
         for (auto i = 0; i < loadInfo->Meta->FieldCount; ++i)
-            for (auto j = 0; j < loadInfo->Meta->ArraySizes[i]; ++j)
-                clientMetaString += loadInfo->Meta->Types[i];
+            for (auto j = 0; j < loadInfo->Meta->Fields[i].ArraySize; ++j)
+                clientMetaString += loadInfo->Meta->Fields[i].Type;
 
         for (auto i = loadInfo->Meta->HasIndexFieldInData() ? 0 : 1; i < loadInfo->FieldCount; ++i)
-            ourMetaString += char(std::tolower(loadInfo->Fields[i].Type));
+            ourMetaString += loadInfo->Fields[i].Type;
 
         std::ostringstream stream;
         if (clientMetaString != ourMetaString)
@@ -957,8 +955,8 @@ void DB2Manager::LoadStores(std::string const& dataPath, uint32 defaultLocale)
 
     std::string db2Path = dataPath + "dbc/";
 
-    DB2StoreProblemList bad_db2_files;
-    uint32 availableDb2Locales = 0xFFF;
+    std::vector<std::string> bad_db2_files;
+    uint32 availableDb2Locales = 0xFF;
 
     std::vector<DB2StorageBase*> storages{};
 
