@@ -80,7 +80,7 @@ struct DB2FileSource
     virtual bool IsOpen() const = 0;
     virtual bool Read(void* buffer, std::size_t numBytes) = 0;
     virtual std::size_t GetPosition() const = 0;
-    virtual void SetPosition(std::size_t position) = 0;
+    virtual bool SetPosition(std::size_t position) = 0;
     virtual std::size_t GetFileSize() const = 0;
     virtual char const* GetFileName() const = 0;
 };
