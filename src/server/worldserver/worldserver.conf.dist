@@ -626,7 +626,8 @@ DeclinedNames = 0
 #    Expansion
 #        Description: Allow server to use content from expansions. Checks for expansion-related
 #                     map files, client compatibility and class/race character creation.
-#           Default:  6 - (Expansion 6 Legion)
+#        Default:     7 - (Expansion 7)
+#                     6 - (Expansion 6)
 #                     5 - (Expansion 5 Warlords of Draenor)
 #                     4 - (Expansion 4 Mists of Pandaria)
 #				      3 - (Expansion 3 Cataclysm)
@@ -634,7 +635,7 @@ DeclinedNames = 0
 #                     1 - (Expansion 1 Burning Crusade)
 #                     0 - (Disabled, Ignore and disable expansion content (maps, races, classes)
 
-Expansion = 6
+Expansion = 7
 
 #
 #    MinPlayerName
@@ -736,7 +737,7 @@ SkipCinematics = 0
 #        Range:       1-255
 #        Default:     110
 
-MaxPlayerLevel = 110
+MaxPlayerLevel = 120
 
 #
 #    MinDualSpecLevel

@@ -43,6 +43,8 @@ namespace Trinity
             return EXPANSION_WARLORDS_OF_DRAENOR;
         if (level < 110)
             return EXPANSION_LEGION;
+        if (level < 120)
+            return EXPANSION_BATTLE_FOR_AZEROTH;
         return CURRENT_EXPANSION;
     }
 
