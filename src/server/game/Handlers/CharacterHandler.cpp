@@ -1528,7 +1528,7 @@ void WorldSession::HandleCharRaceOrFactionChange(WorldPackets::Character::CharRa
 
     // Race specific languages
 
-    if (info->RaceID != RACE_ORC && info->RaceID != RACE_HUMAN)
+    if (info->RaceID != RACE_ORC && info->RaceID != RACE_HUMAN && info->RaceID != RACE_MAGHAR_ORC)
     {
         stmt = CharacterDatabase.GetPreparedStatement(CHAR_INS_CHAR_SKILL_LANGUAGE);
         stmt->setUInt64(0, lowGuid);
@@ -1537,6 +1537,7 @@ void WorldSession::HandleCharRaceOrFactionChange(WorldPackets::Character::CharRa
         switch (info->RaceID)
         {
             case RACE_DWARF:
+            case RACE_DARK_IRON_DWARF
                 raceLang = 111;
                 break;
             case RACE_DRAENEI:
